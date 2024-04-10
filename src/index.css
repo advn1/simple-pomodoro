@@ -1,0 +1,172 @@
+:root {
+  --body_background: white;
+  --text_color: black;
+  --left_time: rgb(84, 62, 246);
+  --past_time: rgb(243, 129, 167);
+  --box_shadow_color: rgba(0, 0, 0, 0.41);
+}
+
+[data-theme="dark"] {
+  --body_background: rgb(19,19,19);
+  --text_color: white;
+  --box_shadow_color: rgba(244,244,244,0.21);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--body_background);
+  color: var(--text_color)
+}
+
+.circle-outer {
+  width:50vmin;
+  height:50vmin; 
+  max-width: 300px;
+  max-height: 300px;
+  border:2.5vh  solid transparent;
+  border-radius:50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+}
+
+span {
+  margin: 5px 0 5px 0;
+  color: var(--text_color)
+}
+
+.time {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+.focus {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+
+.time {
+  font-size: clamp(1.5rem, 7vw + 1rem, 5rem);
+}
+
+.sessions-amount {
+  font-size: clamp(0.5rem, 1.25vw + 0.75rem, 4rem);
+}
+
+.focus {
+  font-size: clamp(1.5rem, 2vw + 1rem, 4rem);
+}
+
+@media (min-width: 400px) and (max-width: 750px) {
+  .time,
+  .focus {
+    font-size: clamp(2rem, 1vw + 1 rem, 6rem);
+  }
+
+  .time {
+    font-size: clamp(2rem, 2vmin + 3 rem, 12rem);
+
+  }
+}
+
+
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  gap: 10px;
+  width:40vmin;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  cursor: pointer;
+  max-width: 60px;
+}
+
+.modal {
+  position: absolute;
+  background: var(--body_background);
+  padding: 15px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  border-radius: 10px;
+  box-shadow: 1px 14px 34px -18px var(--box_shadow_color);
+
+}
+
+.modal p {
+  margin-top: 13px;
+  font-weight: 700;
+}
+
+.modal input {
+  border: 2px solid rgb(216, 216, 216);
+  border-radius: 6px;
+  background: none;
+  font-size: 1.1rem;
+  color: var(--text_color);
+  font-weight: 600;
+  max-width: 150px;
+  margin-right: 10px;
+}
+
+.study-dur {
+  display: flex;
+  flex-direction: column;
+}
+
+.study-dur p {
+  margin-bottom: 0;
+}
+
+.study-dur input {
+  margin-top: 13px;
+}
+
+.dur-close {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upper-part {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.config-part {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.footer p {
+  font-size: 16px;
+}
