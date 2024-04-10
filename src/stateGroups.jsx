@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 const stateGroups = () => {
 
-  const [stopTimer, setStopTimer] = useState(false);
+  const [stopTimer, setStopTimer] = useState(true);
   const [session, setSession] = useState(1);
   const [maxSession, setMaxSession] = useState(4)
   const [studyTime, setStudyTime] = useState(900);

@@ -6,7 +6,7 @@ import { FaCircleStop } from "react-icons/fa6";
 import { MdLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
 import { VscDebugRestart } from "react-icons/vsc";
-
+import { FaPlay } from "react-icons/fa";
 import { IoIosSettings } from "react-icons/io";
 
 import sound from "../notification.wav"
@@ -14,7 +14,7 @@ import sound from "../notification.wav"
 
 const Menu = ({setModal}) => {
     const { session, setSession, maxSession, setStopTimer, stopTimer, mode, setMode, setStudyTime, maxStudyTime, setRelaxTime, maxBreakTime} = useContext(AllContext)
-    
+    const [btnStopClick, setBtnStopClick] = useState(false)
     const btnSize = "10vmin"
     
     function handleTimerUpdateBack() {
@@ -87,13 +87,22 @@ const Menu = ({setModal}) => {
         else {setLightMode()}
       }
 
+      function handleStopBtnClick() {
+        setStopTimer(!stopTimer)
+        setBtnStopClick(!btnStopClick)
+      }
+
 
     return (
         <>
             <div className='menu'>
                 <div className='upper-part'>
                     <FaCircleArrowLeft className='btn' size={btnSize} onClick={handleTimerUpdateBack}/>
-                    <FaCircleStop className='btn' size={btnSize} onClick={() => setStopTimer(!stopTimer)}/>
+                    {
+                        !btnStopClick 
+                        ? <FaPlay style={{marginLeft:"5px"}} className='btn' size={btnSize} onClick={handleStopBtnClick}/>
+                        : <FaCircleStop className='btn' size={btnSize} onClick={handleStopBtnClick}/>
+                    }
                     <FaArrowCircleRight className='btn' size={btnSize} onClick={handleTimerUpdateForth}/>
                 </div>
                 <div>
