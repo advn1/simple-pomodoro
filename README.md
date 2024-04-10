@@ -2,6 +2,8 @@
 
 This is a simple Pomodoro technique application designed to help you manage your study or work sessions effectively.
 
+Visit: [https://simple-pomodoro-advn.vercel.app/](https://simple-pomodoro-advn.vercel.app/)
+
 ## Main Features
 
 1. ⏰ **Sessions System:** The application allows you to set custom study and break times, as well as the number of sessions you want to complete.
