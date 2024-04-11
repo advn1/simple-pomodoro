@@ -1,4 +1,8 @@
-:root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
   --body_background: white;
   --text_color: black;
   --left_time: rgb(84, 62, 246);
@@ -169,4 +173,4 @@ span {
 
 .footer p {
   font-size: 16px;
-}
+} */

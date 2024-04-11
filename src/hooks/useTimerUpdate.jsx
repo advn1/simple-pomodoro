@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const useTimerUpdate = (stopTimer, session, setSession, maxSession, studyTime, relaxTime, mode, setMode, setStudyTime, setRelaxTime, maxStudyTime, maxBreakTime) => {
     useEffect(() => {
+        console.log(session)
         if (stopTimer) {
             return;
         }
