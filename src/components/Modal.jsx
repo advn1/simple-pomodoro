@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { AllContext } from '../context/All';
-import 'rc-slider/assets/index.css';
 
 const Modal = ({ setModal }) => {
     const { setStudyTime, setRelaxTime, studyTime, relaxTime, setMaxStudyTime, setMaxBreakTime, maxSession, setMaxSession, session, setSession, setMode, setStopTimer} = useContext(AllContext);
