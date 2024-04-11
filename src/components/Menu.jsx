@@ -79,7 +79,7 @@ const Menu = ({theme, setTheme, setModal}) => {
     <div className='container flex w-full flex-col mt-4 gap-6 justify-center items-center'>
         <div className='flex gap-3 small:gap-10 justify-between items-center'>
             <FaCircleArrowLeft className={btn} size={btnSize} onClick={handleTimerUpdateBack}/>
-            {!btnStopClick ? <FaPlay className={btn + " ml-2"} size={btnSize} onClick={handleStopBtnClick}/>
+            {stopTimer ? <FaPlay className={btn + " ml-2"} size={btnSize} onClick={handleStopBtnClick}/>
                             : <FaCircleStop className={btn} size={btnSize} onClick={handleStopBtnClick}/>
             }
             <FaArrowCircleRight className={btn} size={btnSize} onClick={handleTimerUpdateForth}/>

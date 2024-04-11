@@ -54,7 +54,9 @@ const Counter = ({studyTime, relaxTime, mode}) => {
       formattedMinutes = String(minutes).padStart(2, '0');
       formattedSeconds = String(remainingSeconds).padStart(2, '0')    }
 
-  
+    console.log({studyTime, minutes, formattedMinutes})
+
+  const timerValues = ((studyTime === 3600 && mode === 'FOCUS') || (relaxTime === 3600 && moded === 'BREAK')) ? '60:00' : `${formattedMinutes}:${formattedSeconds}`
 
   return (
     <div className='container mb-[20px] flex flex-col justify-end items-center w-50vmin h-50vmin max-w-80 max-h-96'>
@@ -63,16 +65,10 @@ const Counter = ({studyTime, relaxTime, mode}) => {
       value={val / val2 * 100 }
       
       styles={timerCSS}>
-        <span className="font-bold text-black dark:text-white text-3xl small:text-5xl medium:text-6xl sm:text-7xl text- md:text-7xl lg:text-7xl xl:text-7xl">{formattedMinutes}:{formattedSeconds}</span>
+        <span className="font-bold text-black dark:text-white text-3xl small:text-5xl medium:text-6xl sm:text-7xl text- md:text-7xl lg:text-7xl xl:text-7xl">{timerValues}</span>
         <span className="font-bold text-black dark:text-white text-1xl small:text-3xl medium:text-3xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-3xl">{mode}</span>
       </CircularProgressbarWithChildren>
     </div>
-
-
-
-
-
-
   )
 }
 

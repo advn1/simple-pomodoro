@@ -1,17 +1,26 @@
 import React, { useContext, useState } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { AllContext } from '../context/All';
-
+import 'rc-slider/assets/index.css';
 
 const Modal = ({ setModal }) => {
-    const { setStudyTime, setRelaxTime, studyTime, relaxTime, setMaxStudyTime, setMaxBreakTime, maxSession, setMaxSession, session, setSession, setMode} = useContext(AllContext);
+    const { setStudyTime, setRelaxTime, studyTime, relaxTime, setMaxStudyTime, setMaxBreakTime, maxSession, setMaxSession, session, setSession, setMode, setStopTimer} = useContext(AllContext);
     const [localStudy, setLocalStudy] = useState(Math.round(studyTime /60));
     const [localBreak, setLocalBreak] = useState(Math.round(relaxTime / 60));
     const [localSessions, setLocalSessions] = useState(maxSession)
 
+    const [error, setError] = useState([false,false,false])
+
+    console.log(error[0])
+
     function handleUpdateSettings(t, e) {
-        const value = parseInt(e.target.value, 10);
-        if (!isNaN(value)) {
+        const keyPair = new Map([['s',0],['b',1],['n',2]])
+        const value = Number(e.target.value);
+        if (value === 0) {
+            setStopTimer(true)
+        }
+        console.log(value)
+        if (!isNaN(value) || value) {
             if (t === 's') {
                 setStudyTime(value * 60);
                 setMaxStudyTime(value * 60)
@@ -28,11 +37,18 @@ const Modal = ({ setModal }) => {
                 }
                 setLocalSessions(value);
             }
+        } else {
+            setError(prev => {
+                let clone = prev
+                clone[keyPair.get(t)] = true
+                console.log(clone)
+                return clone
+            })
         }
     }
 
   return (
-    <div className='w-[260px] h-[260px] absolute z-10 bg-white p-4 pb-6 flex flex-col items-start justify-start rounded-xl shadow-xl'>
+    <div className='w-[260px] h-auto absolute z-10 bg-white p-4 pb-6 flex flex-col items-start justify-start rounded-xl shadow-xl'>
       <div className='flex flex-col'>
         <div className='flex justify-between items-baseline'>
             <p className='mb-[8px] font-bold'>Study Duration</p>
@@ -43,12 +59,12 @@ const Modal = ({ setModal }) => {
             value={localStudy}
             className='font-semibold px-2 w-[160px] self-auto p-[2px] mr-[6px] border border-solid border-gray-400 rounded-lg'
             onChange={(e) => handleUpdateSettings('s', e)}
-            type='number'
-            min={1}
-            max={1111111111111}
+            type='text'
             placeholder='45 min...'
             />
             <label>minutes</label>
+            <br />
+            <label hidden={!error[0]}>Enter number!</label>
         </div>
       </div>
       <div className='mb-[10px]'>
@@ -57,12 +73,12 @@ const Modal = ({ setModal }) => {
         className='font-semibold px-2 w-[160px] p-[2px] mr-[6px] border border-solid border-gray-400 rounded-lg'
         value={localBreak}
         onChange={(e) => handleUpdateSettings('b', e)}
-        min={1}
-        max={1111111111111}
-        type='number'
+        type='text'
         placeholder='5 min..'
         />
         <label>minutes</label>
+        <br />
+        <label hidden={!error[1]}>Enter number!</label>
         </div>
         <div className=''>
                 <p className='mb-[8px] font-bold text-red'>Sessions</p>
@@ -70,12 +86,12 @@ const Modal = ({ setModal }) => {
                     className='font-semibold px-2 w-[160px] p-[2px] mr-[6px] border border-solid border-gray-400 rounded-lg'
                     value={localSessions}
                     onChange={(e) => handleUpdateSettings('n', e)}
-                    min={1}
-                    max={1111111111111}
-                    type='number'
+                    type='text'
                     placeholder='4...'
                 />
                 <label>amount</label>
+                <br />
+                <label hidden={!error[2]}>Enter number!</label>
             </div>
     </div>
   )
